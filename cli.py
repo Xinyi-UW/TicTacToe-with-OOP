@@ -1,17 +1,19 @@
 # cli.py
-import random
 
-from logic import Board, Player, Bot, Game
+from logic import Game
 
-if __name__ == '__main__':
+def main():
     while True:
         game = Game()
         game.play()
-        while True:
-            play_again = input('Do you want to play again? (Y/N): ')
-            if play_again.upper() == 'Y':
-                break
-            elif play_again.upper() == 'N':
-                exit()
-            else:
-                print("Invalid input. Please enter 'Y' or 'N'.")
+
+        play_again = input('Do you want to play again? (Y/N): ').upper()
+        while play_again not in ('Y', 'N'):
+            print("Invalid input. Please enter 'Y' or 'N'.")
+            play_again = input('Do you want to play again? (Y/N): ').upper()
+
+        if play_again == 'N':
+            exit()
+
+if __name__ == '__main__':
+    main()
